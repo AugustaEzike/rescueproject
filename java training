@@ -74,3 +74,71 @@ public class Main {
 	}
 
 }
+
+
+import java.util.*;
+
+//2D array loop
+public class Main {
+
+	public static void main (String[] args) {
+		ArrayList<ArrayList<String>> groceryList = new ArrayList();
+		
+			ArrayList<String> bakeryList = new ArrayList();
+			bakeryList.add("garlic bread");
+			bakeryList.add("eggs");
+			bakeryList.add("milk");
+			bakeryList.add("sugar");
+			
+			ArrayList<String> produceList = new ArrayList();
+			produceList.add("tomatoes");
+			produceList.add("peppers");
+			produceList.add("carrots");
+			
+			
+			ArrayList<String> drinksList = new ArrayList();
+			drinksList.add("soda");
+			drinksList.add("water");
+			
+			//create a 2D array
+			groceryList.add(bakeryList);
+			groceryList.add(produceList);
+			groceryList.add(drinksList);
+			
+			System.out.println(groceryList);
+			//to retrieve only one list
+			System.out.println(groceryList.get(0));
+			//to retrieve the first index of the first list
+			System.out.println(groceryList.get(0).get(0));
+		 
+	}
+
+}
+
+//For Each
+import java.util.*;
+
+
+public class Main {
+
+	public static void main (String[] args) {
+		//declare an array
+		//String[] animals = {"cat", "dog", "lion", "birrd"};
+		
+		ArrayList<String> animals = new ArrayList();
+		animals.add("rat");
+		animals.add("bird");
+		animals.add("fish");
+		
+		System.out.println(animals);
+		
+		
+		//for each loop
+		
+		for(String i : animals) {
+			System.out.println(i);
+		}
+	}
+
+}
+
