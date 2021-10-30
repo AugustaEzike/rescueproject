@@ -142,3 +142,91 @@ public class Main {
 
 }
 
+//Methods
+
+
+
+public class Main {
+
+	public static void main (String[] args) {
+		String a = "Bayo";
+		String b = "Rosa";
+		int c = 123;
+		//when you call the hello method, it displays what is in the block of code
+		hello(a, b, c); // here a is an argument
+		
+	}
+
+	static void hello(String a, String b, int  c) { // you need a matching set of parameters
+		//anything within the set of parenthesis belongs to the method
+		System.out.println(a + b + c);
+	}
+}
+
+//Methods with Return types
+
+public class Main {
+
+	public static void main (String[] args) {
+		
+		//create a method that will add 2 numbers and return
+		//the sum of them
+		
+		//first initialize 2 int variables
+		int x = 2;
+		int y = 3;
+		int a = 4;
+		int b = 6;
+	
+		//call the method
+		sum(x, y);
+		
+		//call the method for return type
+		System.out.println(add(a, b));
+		
+	}
+	
+	//create a method
+	static void sum(int x, int y) {
+		System.out.println(x + y);
+	}
+	
+	//return type int
+	 static int add(int a, int b) {
+		 return a + b;
+	 }
+}
+
+//Overloaded Method - methods that have the same name but different parameters
+
+public class Main {
+
+	public static void main (String[] args) {
+		int x = add(1, 2, 6, 9, 6);
+		
+		System.out.println(x);
+		
+	 }
+	
+	static int add(int a, int b) {
+		System.out.println("This is overloaded method #1");
+		return a + b;		
+	}
+	
+	static int add(int a, int b, int c) {
+		System.out.println("This is overloaded method #2");
+		return a + b + c;		
+	}
+	
+	static int add(int a, int b, int c, int d) {
+		System.out.println("This is overloaded method #3");
+		return a + b + c + d;
+	}
+	
+	static int add(int a, int b, int c, int d, int e) {
+		System.out.println("This is overloaded method #4");
+		return a + b + c + d + e;		
+	}
+}
+
+
