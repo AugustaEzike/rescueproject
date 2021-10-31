@@ -230,3 +230,45 @@ public class Main {
 }
 
 
+//rock paper scissors game
+import java.util.Random;
+import java.util.Scanner;
+
+
+public class Main {
+
+	public static void main (String[] args) {
+		
+		//rock, paper, scissors game
+		//rules are rock beats scissors, scissors beats paper, 
+		//paper beats rock
+		
+		
+		//get user input
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Type 1 for Rock, 2 for Paper and 3 for Scissors");
+		int num = scanner.nextInt();
+		scanner.nextLine();
+		scanner.close();
+		
+		
+		//find a random number between 0 and 3
+		Random random = new Random();
+		int x = random.nextInt(4);
+		System.out.println(x);
+	
+		//conditional statement
+		 if ((num > 1 && num < 3) && (x >= 1)) {
+				System.out.println("paper beat rock");
+			}else if ((num >= 1) && (x >= 3)) {
+				System.out.println("rock beats scissors");
+			}else if ((num >= 3) && (x >= 1 && x < 3)) {
+				System.out.println("paper beats rock");
+			}else {
+				System.out.println("Game Over! start again!!");
+			} 
+		
+	 }
+	
+}
+ 
