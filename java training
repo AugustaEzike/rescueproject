@@ -346,5 +346,47 @@ public class Car {
 
 }
 
+//Global and local variables
+
+//local - declared inside a method and visible to only that method
+//global - declared outside a mehtod, but within a class and visible to all parts of the class
+public class Main {
+
+	public static void main (String[] args) {
+		DiceRoller diceRoller = new DiceRoller();
+	}
+	
+}
+ 
+import java.util.Random;
+
+public class DiceRoller {
+	
+	Random random; //global variable
+	int num;
+	
+	DiceRoller(){
+		 random = new Random();		//local variable
+	}
+	
+	void roll() {
+		num = random.nextInt(6)+1;
+		System.out.println(num);
+	}
+}
+//another way of writing this, but the top one is best as it has the global and local variable
+DiceRoller(){
+	random = new Random();		//local variable
+	int num = 0;
+	roll(random, num);
+}
+
+void roll(Random random, int num) {
+   num = random.nextInt(6)+1;
+   System.out.println(num);
+}
+}
+
+
  
  
