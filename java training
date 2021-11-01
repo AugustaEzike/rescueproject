@@ -305,5 +305,46 @@ public class Car {
 
 }
 
+//constructor
+public class Main {
+
+	public static void main (String[] args) {
+		Car myCar = new Car("toyota", 2022, 13.09);
+		Car thatCar = new Car("Chevrolet", 2030, 16.70);
+		
+		 System.out.println(myCar.name);
+		 System.out.println(myCar.year);
+		 System.out.println();
+		 System.out.println(thatCar.name);
+		 System.out.println(thatCar.year);
+		 
+		 myCar.drive();
+		 thatCar.brake();
+		
+	 }
+	
+}
+ 
+public class Car {
+	String name;
+	int year;
+	double price;
+	
+	Car(String name, int year, double price){
+		this.name = name;
+		this.year = year;
+		this.price = price;			
+	}
+	
+	void drive() {
+		System.out.println(this.name + " is driving");
+	}
+	
+	void brake() {
+		System.out.println(this.name + " has stopped");
+	}
+
+}
+
  
  
