@@ -388,5 +388,19 @@ void roll(Random random, int num) {
 }
 
 
+//codewars
+
+
+public class DiceRoller {
+	public static boolean solution (String str, String ending) {
+		char option = str.charAt((str.length())-1);
+		char option2 = str.charAt((str.length())-2);
+		char option3 = ending.charAt(0);
+		char option4 = ending.charAt(1);
+		if((option == option3) && (option2 == option4)) {
+			return false;
+		}
+		return true;
+	}
  
  
