@@ -402,5 +402,64 @@ public class DiceRoller {
 		}
 		return true;
 	}
+
+//OVERLOADED CONSTRUCTORS
+public class Main {
+
+	public static void main (String[] args) {
+		DiceRoller diceRoller = new DiceRoller("thick crust", "tomato", "mozzarella", "peperoni");
+		 
+		System.out.println(diceRoller.bread);
+	}
+	
+}
  
- 
+
+
+public class DiceRoller {
+	String bread;
+	String sauce;
+	String cheese;
+	String topping;
+	
+	DiceRoller(String bread, String sauce, String cheese, String topping){//this is a normal constructor
+		this.bread = bread;
+		this.sauce = sauce;
+		this.cheese = cheese;
+		this.topping = topping;
+	}
+
+DiceRoller(String bread, String sauce, String cheese){//this is an overloaded constructor
+	this.bread = bread;
+	this.sauce = sauce;
+	this.cheese = cheese;
+	}
+
+}
+
+
+//TO STRING()
+public class DiceRoller {
+	String color;
+	String model;
+	int year;
+	int number;
+	
+	
+	 public String  toString() {
+		return color+ "\n" + model+ "\n" + year + "\n" + number;
+	}
+}
+
+public class DiceRoller {
+	String color;
+	String model;
+	int year;
+	int number;
+	
+	
+	 public String  toString() {
+		return color+ "\n" + model+ "\n" + year + "\n" + number;
+	}
+}
+
