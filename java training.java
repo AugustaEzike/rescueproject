@@ -439,7 +439,7 @@ DiceRoller(String bread, String sauce, String cheese){//this is an overloaded co
 
 
 //TO STRING()
-public class DiceRoller {
+public class DiceRoller { //basically, class, constructor, arrays. everything is an object (with attributes and methods (or characters and behavior))
 	String color;
 	String model;
 	int year;
@@ -462,4 +462,45 @@ public class DiceRoller {
 		return color+ "\n" + model+ "\n" + year + "\n" + number;
 	}
 }
+
+
+//STATIC MODIFIER
+public class Main {
+
+	public static void main (String[] args) {
+		
+		//static modifier is a modifier that can be applied to a variable/method. Anything that is static is also know as the static member.
+		//the class that contains the static member owns the member. anything that the class own is shared by the instances of the class
+		 
+		//because the String numberoffriend is static and is owned by the class DiceRoller, you can access it using the class name
+		//instead of using the name of the class instances to call it
+		//DiceRoller diceRoller = new DiceRoller(123);
+		//DiceRoller diceRoller2 = new DiceRoller(123);
+				
+		System.out.println(DiceRoller.numberofFriends);
+		System.out.println(DiceRoller.numberofFriends);
+		
+		DiceRoller.displayFriends();
+		
+	}
+	
+}
+
+
+public class DiceRoller {
+	 
+	int number;
+	static int numberofFriends;
+	
+	DiceRoller(int number){
+		this.number = number;
+		numberofFriends++;
+	}
+	
+	static void displayFriends() {
+		System.out.println("you have " + numberofFriends + " friends");
+	}
+}
+
+
 
