@@ -502,5 +502,32 @@ public class DiceRoller {
 	}
 }
 
+//INHERITANCE - uses the keyword extends
+//main
+public class Main {
+
+	public static void main (String[] args) {
+		Next dog = new Next();
+		
+		dog.speak();
+		
+		
+	}
+	
+}
+//parent class
+public class DiceRoller {
+	void speak() {
+		System.out.println("This animal barks");
+	}
+	
+}
+
+//Child class
+public class Next extends DiceRoller {
+	
+	
+
+}
 
 
