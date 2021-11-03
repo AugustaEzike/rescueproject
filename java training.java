@@ -525,9 +525,84 @@ public class DiceRoller {
 
 //Child class
 public class Next extends DiceRoller {
-	
-	
-
+		
 }
 
 
+//OVERRIDE METHODS
+//Main
+public class Main {
+
+	public static void main (String[] args) {
+		DiceRoller dice = new DiceRoller();
+		Next dog = new Next();
+		
+		dice.speak();
+		dog.speak();		
+	}
+	
+}
+
+//parent class
+public class DiceRoller {
+	void speak() {
+		System.out.println("This animal barks");
+	}
+	
+}
+
+//child class
+
+public class Next extends DiceRoller {
+	
+	@Override
+	  void speak() {
+		System.out.println("This animal says woof woof");
+	}
+}
+
+
+//SUPER KEYWORD
+public class Main {
+
+	public static void main (String[] args) {
+		Next dice = new Next("batman", 42, "$$$");
+		Next dice2 = new Next("superman", 40, "everything"); 
+	
+		
+		System.out.println(dice2.toString());
+		
+		
+	}
+	
+}
+//parent class
+
+public class DiceRoller {
+	
+	String name;
+	int age;
+	
+	DiceRoller(String name, int age){
+		this.name = name;
+		this.age = age;
+	}
+	public String toString() {
+		return this.name + "\n" + this.age + "\n";
+	}
+}
+//child class
+
+public class Next extends DiceRoller {
+	String superpower;
+	
+	Next(String name, int age, String superpower){
+		super(name, age); //refers to the variables from the parent class   
+		this.superpower = superpower;
+	}
+	
+	public String toString() {
+		return super.toString()+this.superpower;
+	}
+
+}
