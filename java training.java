@@ -606,3 +606,29 @@ public class Next extends DiceRoller {
 	}
 
 }
+
+//ABSTRACT KEYWORD
+public class Main {
+
+	public static void main (String[] args) {
+		//DiceRoller diceRoller = new DiceRoller();
+		Next next = new Next(); 
+		
+	}
+	
+}
+//Parent class
+public abstract class DiceRoller {
+	
+	abstract void go();
+}
+
+//Child class
+public class Next extends DiceRoller {
+	
+	@Override
+	void go() {
+		System.out.println("the car is moving");
+	}
+
+}
