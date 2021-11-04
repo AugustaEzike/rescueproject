@@ -632,3 +632,81 @@ public class Next extends DiceRoller {
 	}
 
 }
+
+//ENCAPSULATION
+public class Main {
+
+	public static void main (String[] args) {
+		DiceRoller diceRoller = new DiceRoller("toyota", "Acura", 1957);
+		
+		System.out.println(diceRoller.getYear());
+		
+		diceRoller.setYear(2022);
+		
+		System.out.println(diceRoller.getYear());		
+	}	
+}
+
+
+public  class DiceRoller {
+	
+	private String make;
+	private String model;
+	private int year;
+	
+	DiceRoller(String make, String model, int year){
+		//this.make = make;
+		this.setMake(make);
+		//this.model = model;
+		this.setModel(model);
+		//this.year = year;
+		this.setYear(year);
+	}
+	public String getMake() {
+		return make;
+	}
+	
+	public int getYear() {
+		return year; 
+	}
+	
+	public void setMake(String make) {
+		this.make = make;
+	}
+	public void setModel(String model) {
+		this.model = model;
+	}
+	public void setYear(int year) {
+		this.year = year;
+	}
+}
+
+//INTERFACE (uses the implements keyword)
+public class Main {
+
+	public static void main (String[] args) {
+		Next next = new Next();
+		
+		next.move();		
+	}	
+}
+
+public interface DiceRoller {
+	void move();	
+}
+
+
+public class Next implements DiceRoller {
+	
+	@Override
+	public void move() {
+		System.out.println("The car is moving");
+	}
+	
+}
+
+
+
+
+ 
+
