@@ -694,8 +694,7 @@ public class Main {
 public interface DiceRoller {
 	void move();	
 }
-
-
+ 
 public class Next implements DiceRoller {
 	
 	@Override
@@ -706,7 +705,93 @@ public class Next implements DiceRoller {
 }
 
 
+//POLYMORPHISM - The ability of an object to identify as more than one type
+public class Main {
+	public static void main (String[] args) {		
+		 Next n = new Next();
+		 Aah a = new Aah();
+		 
+		 DiceRoller[] dice = {n, a};
+		 
+		 for (DiceRoller x : dice) {
+			 x.speak();
+		 }
+	}
+}
 
+public class DiceRoller {	
+	public void speak() {
+		System.out.println("Say Ah");
+	}	
+}
 
- 
+public class Next extends DiceRoller  {	
+	@Override
+	public void speak() {
+		System.out.println("This is the way we go");
+	}	
+}
 
+public class Aah extends DiceRoller{	
+	@Override
+	public void speak() {
+		System.out.println("This is the way we move");
+	}
+}
+
+//DYNAMIC POLYMORPHISM
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main (String[] args) {
+		
+		//dynamic polymorphism - for when you do not know what the user will decide on
+		DiceRoller dice;
+		//Next n = new Next();
+		//Aah a = new Aah();
+		
+		//dice.speak();		
+		//n.speak();
+		//a.speak();
+		
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Please enter a number. Press 1 for Next, Press 2 for Aah");
+		int choice = scanner.nextInt();
+		
+		if (choice == 1) {
+			dice = new Next();
+			dice.speak();
+		}else if (choice == 2) {
+			dice = new Aah();
+			dice.speak();
+		}else {
+			System.out.println("WHAT DO YOU WANT FROM ME?");
+			dice = new DiceRoller();
+			dice.speak();
+		}		
+	}	
+}
+
+public class DiceRoller {
+	
+	public void speak() {
+		System.out.println("Say Something please");
+	}	
+}
+
+public class Next extends DiceRoller  {
+	
+	@Override
+	public void speak() {
+		System.out.println("This is the way we go");
+	}	
+}
+
+public class Aah extends DiceRoller{
+	
+	@Override
+	public void speak() {
+		System.out.println("This is the way we move");
+	}
+}
