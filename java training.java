@@ -832,3 +832,10 @@ public class Main {
 }
 
 //Banking Application
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main (String[] args) {
+		
+		DiceRoller dice;
