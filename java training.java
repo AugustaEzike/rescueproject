@@ -832,3 +832,172 @@ public class Main {
 }
 
 //Banking Application
+package bankingapplication;
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Bank bank;
+		
+		
+		
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Hello, What is your name?");
+		String name = scanner.next();
+		System.out.println("What would you like to do? "
+				+ "Press 1 for Deposit, Press 2 for Withdrawal"
+				+ "Press 3 to check account balance"
+				+ "Press 4 to display last 5 transactions"
+				+ "Press 5 to Exit");
+		int mainChoice = scanner.nextInt();
+		
+		if (mainChoice == 1) {
+			System.out.println("Where would you like to deposit? Press 1 for Savings, press 2 for Chequing");
+			int depChoice = scanner.nextInt();
+			if (depChoice == 1) {
+				bank = new SavingsAccount();
+				bank.depSpeak();
+			}else if (depChoice == 2){
+				bank = new ChequingAccount();
+				bank.depSpeak();
+			} else {
+				System.out.println("that option does not exist, please try again");
+				scanner.nextInt();
+			}
+		} else if(mainChoice == 2) {
+			System.out.println("Where would you like to withdraw from? Press 1 for Chequings Press 2 for Savings");
+			int withChoice = scanner.nextInt();
+			if (withChoice == 1) {
+				bank = new SavingsAccount();
+				bank.withSpeak();
+			}else if (withChoice == 2) {
+				bank = new SavingsAccount();
+				bank.withSpeak();
+			}else {
+				System.out.println("That option does not exist, Please try again");
+			}
+		} else if (mainChoice == 3) {
+			bank = new Bank();
+			bank.checkAcc();
+		} else if (mainChoice == 4) {
+			System.out.println("Here are the last 5 transactions that occured");
+		} else if (mainChoice == 5) {
+			System.out.println("Have a nice day!");
+		}
+	}	
+}
+
+package bankingapplication;
+
+ 
+public class Bank {
+
+	int total;
+				
+	public void depSpeak() {
+		System.out.println("Say Something please");
+	}	
+	
+	
+	public void withSpeak() {
+		System.out.println("Say Something please");
+	}	
+	
+	public void checkAcc() {
+		SavingsAccount a = new SavingsAccount();
+		ChequingAccount b = new ChequingAccount();
+		 total = a.amount + b.amt;
+		 System.out.println("Your total amount is: $" + total);		 
+	}
+}
+
+package bankingapplication;
+
+import java.util.Scanner;
+
+public class ChequingAccount extends Bank {
+int amt;
+
+
+	
+	@Override	
+	//deposit money into chequing account
+	public void depSpeak() {
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("How much would you like to deposit");
+		int cheqDep = scanner.nextInt();
+		amt = amt + cheqDep;
+		System.out.println("Your new balance is: $" + amt);				
+	}
+	
+	@Override
+	//withdraw money from chequing account
+	public void withSpeak() {
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("How much would you like to Withdraw");
+		int cheqWith = scanner.nextInt();
+		if (amt <= 0) {
+			System.out.println("You have insufficient funds to make a withdrawal. Would you like to make a deposit? Press 1 for yes or 2 for No");
+			Scanner n = new Scanner(System.in);
+			int c = n.nextInt();
+			if (c == 1) {
+				depSpeak();
+			}
+		}else {			
+			amt = amt - cheqWith;
+		}		
+		System.out.println("Your new balance is: $" + amt);				
+	}
+	//check account
+	public void checkAcc() {
+		System.out.println("Your account balance is: $" + amt);
+	}
+}
+
+package bankingapplication;
+
+import java.util.Scanner;
+
+public class SavingsAccount extends Bank {
+	int amount = 0;
+	
+	
+	
+	@Override
+	//deposit money into savings account
+	public void depSpeak() {
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("How much would you like to deposit");
+		int savDep = scanner.nextInt();
+		amount = amount + savDep;
+		System.out.println("Your new balance is: $" + amount);				
+	}
+	
+	@Override
+	//withdraw money from savings account
+	public void withSpeak() {
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("How much would you like to Withdraw");	
+		int withDep = scanner.nextInt();
+		if (amount <= 0) {
+			System.out.println("You have insufficient funds to make a withdrawal. Would you like to make"
+					+ " a deposit? Press 1 for yes or 2 for No");
+			Scanner s = new Scanner(System.in);
+			int C = s.nextInt();
+			if (C == 1) {
+				depSpeak();
+			}
+		}else {			
+			amount = amount - withDep;
+		}		
+		System.out.println("Your new balance is: $" + amount);		
+	}
+	
+	//Check account balance
+	public void checkAcc() {
+		System.out.println("Your account balance is: $" + amount);
+	}
+}
+
+
