@@ -1001,3 +1001,23 @@ public class SavingsAccount extends Bank {
 }
 
 
+//File writer
+import java.io.FileWriter;
+import java.io.IOException;
+
+
+public class Main {
+
+	public static void main (String[] args) {
+		try {
+			FileWriter writer = new FileWriter("Poem.txt");
+			writer.write("Roses are red \n violets are blue \n booty \n rocking everywhere ");
+			writer.append("A silly Poem");
+			writer.close();			
+		}catch(IOException e) {
+			e.printStackTrace();
+		}		
+	}	
+}
+ 
+
