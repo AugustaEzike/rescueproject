@@ -1121,3 +1121,46 @@ public class Main {
 	}	
 }
  
+//LABELS
+import java.awt.Color;
+
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.border.Border;
+
+import java.awt.Font;
+
+public class Main {
+
+	public static void main (String[] args) {
+		
+		Border border = BorderFactory.createLineBorder(Color.green,3); //creates a line border for the label, color is green and line size is 3
+		ImageIcon image = new ImageIcon("src/cart.png");
+		JLabel label = new JLabel(); // creates the label
+		label.setText("What are you doing?"); //set text of label.
+		label.setIcon(image);//adds the image to the label
+		label.setHorizontalTextPosition(JLabel.CENTER); //setHorizonalPosition has 3 positions. JLable.center, JLabel.LEFT or JLabel.RIGHT
+		label.setVerticalTextPosition(JLabel.TOP); //has 3 positions for verticalTextPosition: TOP, CENTER and BOTTOM
+		label.setForeground(new Color(0x00FF00)); //sets the color of the label text
+		label.setFont(new Font ("MV Boli", Font.PLAIN, 20)); //sets the font of the text in the label, the font name is MV Boli, font is plain and the font size is 20
+		label.setIconTextGap(100); //can be a positive or negative integer. sets gap of text to image
+		label.setBackground(Color.black); //sets background color for the label
+		label.setOpaque(true); //displays background color so that the label background is visible
+		label.setBorder(border); //sets the border of the label
+		label.setVerticalAlignment(JLabel.CENTER); //Sets the vertical position of the icon + text within the label to the center
+		label.setHorizontalTextPosition(JLabel.CENTER); //sets the horizontal position of the icon + text within the label to the center
+		//label.setBounds(0,0, 250, 250); // x-position, y-position, width and height for the bounds
+		
+		JFrame frame = new JFrame();
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setSize(500,500);
+		//frame.setLayout(null);
+		frame.setVisible(true);
+		frame.add(label); //adds the label to the frame
+		frame.pack(); //resize the size of the frame to accommodate all the components that you are working with. if you use the .pack method, make sure you add all the components first before you .pack, or it doesnt work
+		
+	}	
+}
+ 
