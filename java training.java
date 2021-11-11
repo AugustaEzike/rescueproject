@@ -1001,7 +1001,7 @@ public class SavingsAccount extends Bank {
 }
 
 
-//File writer
+//FILE WRITER
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -1020,4 +1020,27 @@ public class Main {
 	}	
 }
  
+
+//FILE READER
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
+
+public class Main {
+
+	public static void main (String[] args) {
+		try {
+			FileReader reader = new FileReader("Poem.txt");
+			int data = reader.read(); //continue reading this file as long as data does not = -1
+			while(data != -1) {
+				System.out.print((char)data);
+				data = reader.read();
+			}reader.close();
+						
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+	}	
+}
 
