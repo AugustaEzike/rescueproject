@@ -1086,4 +1086,38 @@ public class Main {
 		System.out.println("Byee");
 	}	
 }
+
+//GUI Frame
+import java.awt.Color;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+
+public class Main {
+
+	public static void main (String[] args) {
+		//JFrame = a GUI window to add components to 
+		
+		JFrame frame = new JFrame(); // creates a frame (an instance of a frame. Frame is not visible, so you need to set the visibility to true)
+		frame.setVisible(true); //makes frame visible
+		frame.setSize(420, 420); //sets the x-dimension and y-dimension of frame
+		frame.setTitle("JFrame Title Goes here"); // sets title of frame
+		
+		//when you run this,. there is a little x button on the gui. when clicked, it will hide the frame but not close out the program.
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//exit out of the application. the default is HIDE_ON_CLOSE which make it seem like it is closed but just hides the frame
+		//DO_NOTHING_ON_CLOSE prevents someone from closing the app, even if the x button is hit
+		frame.setResizable(false);//prevents the frame from being resized
+		
+		ImageIcon image = new ImageIcon("logo.png"); //creates an image icon
+		frame.setIconImage(image.getImage()); //changes icon on the gui from the default java icon to the preferred icon(logo.png which has to be saved in the project folder)
+		frame.getContentPane().setBackground(Color.green);//this will change color of background
+		//frame.getContentPane().setBackground(new Color(0, 0, 255)); // this is for RGB colors if you do not want a set color(123, 50, 250). you can also use a hexidecimal color e.g 0x123456
+		
+		
+		/*another way of creating a gui is to make a new class and make the class extend Jframe. 
+		 * then in the new class, make a constructor and then this. everything you need
+		 * will be in the constructor class. then in the main class, make an instance of the new class. 
+		 *  
+		 */
+	}	
+}
  
