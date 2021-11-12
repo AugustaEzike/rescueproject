@@ -1214,4 +1214,201 @@ public class Main {
 	}	
 }
  
+//BUTTONS
+import learningJava.MyFrame;
+
+public class Main {
+
+	public static void main (String[] args) {
+		
+		//JButton - a GUI button that performs an action when you click on it
+		
+		new MyFrame();
+	}	
+}
+ 
+
+package learningJava;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+import java.awt.Font;
+
+public class MyFrame extends JFrame implements ActionListener{ //JFrame parent class does not need to be created. it is a package that needs to be imported
+//import the action listener to listen to when the button is clicked
+	
+	JButton button; //make it a global variable
+	JLabel label;
+	
+	public MyFrame(){
+		ImageIcon icon = new ImageIcon("cart.png");
+		ImageIcon icon2 = new ImageIcon("cart.png");
+		
+		label = new JLabel();
+		label.setIcon(icon2);
+		label.setBounds(150, 150, 150, 150);
+		label.setVisible(false);
+		
+		button = new JButton();
+		button.setBounds(200,100,100,50);
+		button.addActionListener(this);
+		button.setText("I am a text");
+		button.setFocusable(false); //removes the annoying border around the text
+		button.setIcon(icon);
+		button.setHorizontalTextPosition(JButton.CENTER);
+		button.setVerticalTextPosition(JButton.BOTTOM);
+		button.setFont(new Font("Comic Sans", Font.BOLD,25));
+		button.setIconTextGap(-15);
+		button.setForeground(Color.cyan);
+		button.setBackground(Color.lightGray);
+		button.setBorder(BorderFactory.createEtchedBorder());
+		//button.setEnabled(false); //disables the button
+		
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setLayout(null);
+		this.setSize(500,500);
+		this.setVisible(true);
+		this.add(button); 
+		this.add(label);
+	}
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource() == button) {
+			System.out.println("Yes");
+			label.setVisible(true);
+		}
+	}
+}
+
+//BORDER LAYOUT
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import java.awt.Color;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+
+
+public class Main {
+
+	public static void main (String[] args) {
+		
+		JFrame frame = new JFrame(); //create a new frame
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //set the default close operation to exit
+		frame.setSize(500,500); //size of the GUI frame
+		frame.setLayout(new BorderLayout(10, 5)); // the integers set the margins for the width and the height. not really necessary except you need to 
+		frame.setVisible(true); //GUI to visible
+		
+		
+		//create panels within the GUI frame
+		JPanel panel1 = new JPanel();
+		JPanel panel2 = new JPanel();
+		JPanel panel3 = new JPanel();
+		JPanel panel4 = new JPanel();
+		JPanel panel5 = new JPanel();
+		
+		//give each panel a color
+		panel1.setBackground(Color.red);
+		panel2.setBackground(Color.yellow);
+		panel3.setBackground(Color.blue);
+		panel4.setBackground(Color.green);
+		panel5.setBackground(Color.magenta);
+		
+		//set size of panels
+		panel1.setPreferredSize(new Dimension(100,100));
+		panel2.setPreferredSize(new Dimension(100,100));
+		panel3.setPreferredSize(new Dimension(100,100));
+		panel4.setPreferredSize(new Dimension(100,100));
+		panel5.setPreferredSize(new Dimension(100,100));
+		
+		//---------------------------------------------------
+		//--------------------SUB-PANELS---------------------
+		
+		JPanel panel6 = new JPanel();
+		JPanel panel7 = new JPanel();
+		JPanel panel8 = new JPanel();
+		JPanel panel9 = new JPanel();
+		JPanel panel10 = new JPanel();
+		
+		//give each panel a color
+		panel6.setBackground(Color.black);
+		panel7.setBackground(Color.orange);
+		panel8.setBackground(Color.pink);
+		panel9.setBackground(Color.gray);
+		panel10.setBackground(Color.white);
+		
+		panel5.setLayout(new BorderLayout());
+		
+		//set size of panels
+		panel6.setPreferredSize(new Dimension(10,10));
+		panel7.setPreferredSize(new Dimension(10,10));
+		panel8.setPreferredSize(new Dimension(10,10));
+		panel9.setPreferredSize(new Dimension(10,10));
+		panel10.setPreferredSize(new Dimension(10,10));
+		
+		//--------------------SUB-PANELS---------------------
+		//---------------------------------------------------
+		
+		
+		
+		//add panels to frame
+		frame.add(panel1, BorderLayout.NORTH); //NORTH expands horizontally, not vertically
+		frame.add(panel2, BorderLayout.WEST); //WESt expands vertically, not horizontally
+		frame.add(panel3, BorderLayout.EAST);
+		frame.add(panel4, BorderLayout.SOUTH);
+		frame.add(panel5, BorderLayout.CENTER);
+		
+		panel5.add(panel6, BorderLayout.NORTH);
+		panel5.add(panel7, BorderLayout.WEST);
+		panel5.add(panel8, BorderLayout.EAST);
+		panel5.add(panel9, BorderLayout.SOUTH);
+		panel5.add(panel10, BorderLayout.CENTER);
+	}	
+}
+
+//FLOW LAYOUT
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JButton;
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.Dimension;
+
+
+public class Main {
+
+	public static void main (String[] args) {		
+		
+		JFrame frame = new JFrame(); //create a new frame
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //set the default close operation to exit
+		frame.setSize(500,500); //size of the GUI frame
+		//frame.setLayout(new FlowLayout()); //The default parameter for FlowLayout is FlowLayout.CENTER, .LEADING makes the buttons appear on the right, .TRAILING makes the buttons appear on the left
+		frame.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10)); //the integer sets the horizontal and vertical alignment		
+		
+		JPanel panel = new JPanel();
+		panel.setPreferredSize(new Dimension(200,250));
+		panel.setBackground(Color.lightGray);
+		panel.setLayout(new FlowLayout());
+		
+		panel.add(new JButton("1"));
+		panel.add(new JButton("2"));
+		panel.add(new JButton("3"));
+		panel.add(new JButton("4"));
+		panel.add(new JButton("5"));
+		panel.add(new JButton("6"));
+		panel.add(new JButton("7"));
+		panel.add(new JButton("8"));
+		panel.add(new JButton("9"));
+		
+		frame.add(panel);
+		frame.setVisible(true); //GUI to visible
+	}	
+}
+ 
  
