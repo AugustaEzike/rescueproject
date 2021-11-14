@@ -1044,7 +1044,6 @@ public class Main {
 	}	
 }
 
-
 //WORKING WITH AUDIO FILES
 //Creating a basic audio player (works only with wav. files and not mp3, you will need to convert all files to wav.)
 import java.io.File;
@@ -1110,8 +1109,7 @@ public class Main {
 		ImageIcon image = new ImageIcon("logo.png"); //creates an image icon
 		frame.setIconImage(image.getImage()); //changes icon on the gui from the default java icon to the preferred icon(logo.png which has to be saved in the project folder)
 		frame.getContentPane().setBackground(Color.green);//this will change color of background
-		//frame.getContentPane().setBackground(new Color(0, 0, 255)); // this is for RGB colors if you do not want a set color(123, 50, 250). you can also use a hexidecimal color e.g 0x123456
-		
+		//frame.getContentPane().setBackground(new Color(0, 0, 255)); // this is for RGB colors if you do not want a set color(123, 50, 250). you can also use a hexidecimal color e.g 0x123456		
 		
 		/*another way of creating a gui is to make a new class and make the class extend Jframe. 
 		 * then in the new class, make a constructor and then this. everything you need
@@ -1209,8 +1207,7 @@ public class Main {
 		frame.add(redPanel); 	//add panel to frame
 		frame.add(bluePanel);
 		frame.add(greenPanel);
-		redPanel.add(label);
-		
+		redPanel.add(label);		
 	}	
 }
  
@@ -1303,8 +1300,7 @@ public class Main {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //set the default close operation to exit
 		frame.setSize(500,500); //size of the GUI frame
 		frame.setLayout(new BorderLayout(10, 5)); // the integers set the margins for the width and the height. not really necessary except you need to 
-		frame.setVisible(true); //GUI to visible
-		
+		frame.setVisible(true); //GUI to visible		
 		
 		//create panels within the GUI frame
 		JPanel panel1 = new JPanel();
@@ -1353,9 +1349,7 @@ public class Main {
 		panel10.setPreferredSize(new Dimension(10,10));
 		
 		//--------------------SUB-PANELS---------------------
-		//---------------------------------------------------
-		
-		
+		//---------------------------------------------------		
 		
 		//add panels to frame
 		frame.add(panel1, BorderLayout.NORTH); //NORTH expands horizontally, not vertically
@@ -1411,4 +1405,83 @@ public class Main {
 	}	
 }
  
+//GRID LAYOUT
+
+import javax.swing.JFrame;
+import javax.swing.JButton;
+import java.awt.Color;
+import java.awt.GridLayout;
+import java.awt.Dimension;
+
+
+public class Main {
+
+	public static void main (String[] args) {		
+		
+		JFrame frame = new JFrame(); //create a new frame
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //set the default close operation to exit
+		frame.setSize(500,500); //size of the GUI frame
+		//frame.setLayout(new FlowLayout()); //The default parameter for FlowLayout is FlowLayout.CENTER, .LEADING makes the buttons appear on the right, .TRAILING makes the buttons appear on the left
+		frame.setLayout(new GridLayout(3,3 , 10, 10)); //this sets the amount of rows, colums, horizontal and vertical spacing (in pixels)		
+				
+		frame.add(new JButton("1"));
+		frame.add(new JButton("2"));
+		frame.add(new JButton("3"));
+		frame.add(new JButton("4"));
+		frame.add(new JButton("5"));
+		frame.add(new JButton("6"));
+		frame.add(new JButton("7"));
+		frame.add(new JButton("8"));
+		frame.add(new JButton("9"));
+	
+		frame.setVisible(true); //GUI to visible		
+	}	
+}
+
+//LAYERED PANE
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
+import javax.swing.JButton;
+import java.awt.Color;
+import java.awt.GridLayout;
+import java.awt.Dimension;
+
+
+public class Main {
+
+	public static void main (String[] args) {		
+				
+		JLabel label1 = new JLabel();
+		label1.setOpaque(true);
+		label1.setBackground(Color.RED);
+		label1.setBounds(50,50,200,200);
+
+		JLabel label2 = new JLabel();
+		label2.setOpaque(true);
+		label2.setBackground(Color.GREEN);
+		label2.setBounds(100,100,200,200);
+
+		JLabel label3 = new JLabel();
+		label3.setOpaque(true);
+		label3.setBackground(Color.BLUE);
+		label3.setBounds(150,150,200,200);
+		
+		JLayeredPane layeredPane = new JLayeredPane();
+		layeredPane.setBounds(0, 0, 500, 500);
+		
+		layeredPane.add(label1, Integer.valueOf(1)); //the higher the integer, the more on top the panel will be
+		layeredPane.add(label2);
+		layeredPane.add(label3);
+		
+		JFrame frame = new JFrame(); //create a new frame
+		frame.add(layeredPane);
+		
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //set the default close operation to exit
+		frame.setSize(500,500); //size of the GUI frame
+		//frame.setLayout(new FlowLayout()); //The default parameter for FlowLayout is FlowLayout.CENTER, .LEADING makes the buttons appear on the right, .TRAILING makes the buttons appear on the left
+		frame.setLayout(null); 
+		frame.setVisible(true); //GUI to visible
+	}	
+}
  
