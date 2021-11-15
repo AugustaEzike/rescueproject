@@ -1485,4 +1485,91 @@ public class Main {
 	}	
 }
  
-//BUTTONS
+//OPENING A NEW WINDOW EVEYTIME
+//main
+
+public class Main {
+
+	public static void main (String[] args) {
+		Aah launch = new Aah();
+				
+		
+
+	}	
+}
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class Aah implements ActionListener {
+	
+	JFrame frame = new JFrame();
+	JButton myButton = new JButton("New Window");
+	
+	Aah(){
+		
+		myButton.setBounds(100, 160, 200, 40);
+		myButton.setFocusable(false);
+		myButton.addActionListener(this);
+		
+		frame.add(myButton);
+		 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		 frame.setSize(420,420);
+		 frame.setLayout(null);
+		 frame.setVisible(true);		
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {//event listener
+		if(e.getSource()== myButton) {
+			frame.dispose(); //this makes sure that you do not have new/multiple windows opening everytime you click on new window
+			DiceRoller newWindow = new DiceRoller();
+		}		
+	}
+}
+
+import java.awt.Font;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+public class DiceRoller {
+	JFrame frame = new JFrame();
+	JLabel label = new JLabel("Hello");
+	
+	DiceRoller(){
+		label.setBounds(0, 0, 100, 50 );
+		label.setFont(new Font(null, Font.PLAIN, 25));
+		frame.add(label);
+		
+		
+		 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		 frame.setSize(420,420);
+		 frame.setLayout(null);
+		 frame.setVisible(true);
+	}	
+}
+
+//CREATING A DIALOGUE BOX
+import javax.swing.JOptionPane;
+
+public class Main {
+
+	public static void main (String[] args) {
+		//How to create a dialog box 
+		JOptionPane.showMessageDialog(null, "This is how to create a Dialog Box", "title", JOptionPane.PLAIN_MESSAGE);
+		JOptionPane.showMessageDialog(null, "That method does not exist", "title", JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(null, "Do you want to exit the eindow?", "title", JOptionPane.QUESTION_MESSAGE);
+		JOptionPane.showMessageDialog(null, "You are accessing a dangerous file", "title", JOptionPane.WARNING_MESSAGE);
+		JOptionPane.showMessageDialog(null, "Something is wrong, seek IT help", "title", JOptionPane.ERROR_MESSAGE);
+
+		
+		int answer = JOptionPane.showConfirmDialog(null, "Are you ready?", "Game Time", JOptionPane.YES_NO_CANCEL_OPTION);
+		String name = JOptionPane.showInputDialog("What is your name");
+		JOptionPane.showOptionDialogue - gives you the option to put in your own custom buttons or icons	
+		
+	}	
+}
+ 
