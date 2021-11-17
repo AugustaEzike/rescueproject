@@ -1568,7 +1568,7 @@ public class Main {
 		
 		int answer = JOptionPane.showConfirmDialog(null, "Are you ready?", "Game Time", JOptionPane.YES_NO_CANCEL_OPTION);
 		String name = JOptionPane.showInputDialog("What is your name");
-		JOptionPane.showOptionDialogue - gives you the option to put in your own custom buttons or icons	
+		JOptionPane.showOptionDialogue - //gives you the option to put in your own custom buttons or icons	
 		
 	}	
 }
