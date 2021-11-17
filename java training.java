@@ -1573,3 +1573,109 @@ public class Main {
 	}	
 }
  
+
+//SLIDER
+
+public class Main {
+	public static void main (String[] args) {
+		//How to create a slider
+		
+		Aah slider = new Aah();		
+	}	
+}
+
+import java.awt.*;
+import javax.swing.*;
+import javax.swing.event.*;
+
+
+public class Aah implements ChangeListener {
+	
+	JFrame frame;
+	JPanel panel;
+	JLabel label;
+	JSlider slider;
+	
+	Aah(){
+		frame = new JFrame("slider");
+		panel = new JPanel();
+		label = new JLabel();
+		slider = new JSlider(0, 100, 50); // the first 2 numbers are the minimum and the maximum that you can set the range to be between, 
+								//the third number is the starting point, where you want the slider to be positioned at to begining
+		slider.setPreferredSize(new Dimension(400, 200)); //width and height
+		slider.setPaintTicks(true); //this shows the ticks for the measurement
+		slider.setMinorTickSpacing(10); //determines the distance/measurement between each ticks
+		slider.setPaintTrack(true); //this shows the tracks measurement
+		slider.setMajorTickSpacing(25); //this shows the distance between each major tracks
+		slider.setPaintLabels(true); //shows the number on the slider
+		slider.setFont(new Font("MV Boli", Font.PLAIN, 15));
+		slider.setOrientation(SwingConstants.VERTICAL);//changes the orientation to vertical
+		//slider.setOrientation(SwingConstants.HORIZONTAL);//changes the orientation to horizontal
+		slider.addChangeListener(this);// this because we are implementing change listener in this public class
+		label.setText("°C = " + slider.getValue()); //slider.getValue will get the value or the measurement of where the slider is currently at on the slide range
+		label.setFont(new Font("MV Boli", Font.PLAIN, 50));
+	
+		panel.add(slider);
+		panel.add(label);
+		frame.add(panel);
+		frame.setSize(420,420); 
+		frame.setVisible(true);
+	}	
+	
+	@Override
+	public void stateChanged(ChangeEvent e) {
+		label.setText("°C = " + slider.getValue()); //in this statechange method, whever the state changes for the slider, it would execute this code		
+	}
+}
+
+//PROGRESS BAR
+
+public class Main {
+	public static void main (String[] args) {
+		Aah progressBar = new Aah();
+	}	
+}
+
+import java.awt.*;
+import javax.swing.*;
+
+public class Aah {
+	JFrame frame;
+	JProgressBar bar;
+	
+	Aah(){		
+		bar = new JProgressBar(0, 500); //minimum and maximum value
+		bar.setValue(0);
+		bar.setBounds(0,0,500,50);//because you are using a no layout manager, you will need to set the bounds 
+									//in this order: x dimension, y-dimension, length and height(in pixel)
+		bar.setStringPainted(true);// adds a percentage to progress bar which changes are the bar fills up
+		bar.setFont(new Font("MV Boli", Font.BOLD, 25));
+		bar.setForeground(Color.red);//the fill color is red
+		bar.setBackground(Color.black);//background is black
+		
+		frame = new JFrame();
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setSize(500,500);
+		frame.setLayout(null);
+		frame.setVisible(true);
+		frame.add(bar);
+		
+		fill();		
+	}
+
+	public void fill() {
+		int counter = 500;
+		while (counter >0) {
+			bar.setValue(counter);
+			try {
+				Thread.sleep(100); //simulates bar increasing over a set period of time (in milliseconds. 1000 milliseconds = 1 sec)
+			} catch (InterruptedException e) {				
+				e.printStackTrace();
+			} 
+			counter -=1;
+		}
+		bar.setString("done"); //after the bar is done, it will comment done
+	}
+}
+ 
+ 
