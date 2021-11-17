@@ -1678,4 +1678,92 @@ public class Aah {
 	}
 }
  
+//MENU BAR
+
+public class Main {
+
+	public static void main (String[] args) {
+		Aah menu = new Aah();
+	}	
+}
+import java.awt.event.*;
+import javax.swing.*;
+import java.awt.FlowLayout;
+
+
+public class Aah extends JFrame implements ActionListener {
+	JMenuBar menuBar;
+	JMenu file;
+	JMenu edit;
+	JMenu help;
+	JMenuItem loadItem;
+	JMenuItem saveItem;
+	JMenuItem exitItem;
+	ImageIcon loadIcon;
+	ImageIcon saveIcon;
+	ImageIcon exitIcon;
+	
+	Aah(){
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		this.setSize(500,500);
+		this.setLayout(new FlowLayout());		
+		this.setVisible(true);
+		
+		menuBar = new JMenuBar();
+		this.setJMenuBar(menuBar);
+		
+		file = new JMenu("File");
+		edit = new JMenu("Edit");
+		help = new JMenu("Help");
+		
+		menuBar.add(file);
+		menuBar.add(edit);
+		menuBar.add(help);
+		
+		loadItem = new JMenuItem("Load");
+		saveItem = new JMenuItem("Save");
+		exitItem = new JMenuItem("Exit");
+		
+		loadItem.addActionListener(this);
+		saveItem.addActionListener(this);
+		exitItem.addActionListener(this);
+		
+		//create icons
+		loadIcon = new ImageIcon("load.png");
+		saveIcon = new ImageIcon("save.png");
+		exitIcon = new ImageIcon("exit.png");
+		
+		//set icons
+		loadItem.setIcon(loadIcon);
+		saveItem.setIcon(saveIcon);
+		exitItem.setIcon(exitIcon);
+		
+		//This is to use keyboard shortcuts
+		loadItem.setMnemonic(KeyEvent.VK_L);//L for load
+		saveItem.setMnemonic(KeyEvent.VK_S);//S for save
+		exitItem.setMnemonic(KeyEvent.VK_E);//E for exit
+		file.setMnemonic(KeyEvent.VK_F);//Alt + F for file
+		edit.setMnemonic(KeyEvent.VK_E);//Alt + E for edit
+		help.setMnemonic(KeyEvent.VK_H);//Alt + H for help
+		
+		
+		file.add(loadItem);
+		file.add(saveItem);
+		file.add(exitItem);
+				
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		
+		if (e.getSource() == loadItem) {
+			System.out.println("file loading");
+		} else if(e.getSource() == saveItem) {
+			System.out.println("get program");
+		} else if (e.getSource() == exitItem) {
+			System.exit(0); //exits the program
+		}
+	}
+
+}
  
