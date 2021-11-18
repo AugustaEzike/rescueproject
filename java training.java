@@ -1781,7 +1781,7 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
-import java.awt.GridLayout;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -1814,8 +1814,7 @@ public class Aah extends JFrame implements ActionListener {
 		//checkIcon = new ImageIcon("check.png");
 		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setLayout(new GridLayout(5, 1));
-		this.setAlignment(JComponent.LEFT_ALIGNMENT);
+		this.setLayout(new FlowLayout());
 		
 		checkbox1.setText("pizza");
 		checkbox2.setText("donut");
@@ -1855,3 +1854,82 @@ public class Aah extends JFrame implements ActionListener {
 	}	
 }
  
+//Radio Button
+public class Main {
+	
+	public static void main (String[] args) {
+		Aah radio = new Aah();
+		
+	}	
+}
+
+import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComponent;
+import javax.swing.JFrame;
+import javax.swing.JRadioButton;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class Aah extends JFrame implements ActionListener {
+	//RadioButton - one or more buttons in a grouping in which only one may be selected
+	
+	JRadioButton pizzaButton;
+	JRadioButton donutButton;
+	JRadioButton hamburgerButton;
+	JRadioButton crutonButton;
+	
+	Aah(){
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setLayout(new FlowLayout());
+		pizzaButton = new JRadioButton("Pizza");
+		donutButton = new JRadioButton("Donut");
+		hamburgerButton = new JRadioButton("Hamburger");
+		crutonButton = new JRadioButton("Cruton");
+		
+		//create a button group. this add all the buttons to a group so you can only select one button
+		ButtonGroup group = new ButtonGroup();
+		group.add(pizzaButton);
+		group.add(donutButton);
+		group.add(hamburgerButton);
+		group.add(crutonButton);
+		
+		//add font and font styling
+		pizzaButton.setFont(new Font ("MV Boli", Font.PLAIN, 35));
+		donutButton.setFont(new Font ("MV Boli", Font.PLAIN, 35));
+		hamburgerButton.setFont(new Font ("MV Boli", Font.PLAIN, 35));
+		crutonButton.setFont(new Font ("MV Boli", Font.PLAIN, 35));		
+		
+		//adds the button to the frame
+		this.add(pizzaButton);
+		this.add(donutButton);
+		this.add(hamburgerButton);
+		this.add(crutonButton);
+		
+		//add Action listener to each button
+		pizzaButton.addActionListener(this);
+		donutButton.addActionListener(this);
+		hamburgerButton.addActionListener(this);
+		crutonButton.addActionListener(this);
+		
+		this.pack();
+		this.setVisible(true);
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == pizzaButton) {
+			System.out.println("You get Pizza");
+		}else if (e.getSource() == donutButton) {
+			System.out.println("you ordered donut");
+		}else if (e.getSource() == hamburgerButton) {
+			System.out.println("you get hamburger");
+		}else if(e.getSource() == crutonButton) {
+			System.out.println("where are my crutons?");
+		}		
+	}	
+}
