@@ -1766,4 +1766,92 @@ public class Aah extends JFrame implements ActionListener {
 	}
 
 }
+
+//GUI CHECKBOXES
+public class Main {
+	
+	public static void main (String[] args) {
+		Aah checkbox = new Aah();
+		
+	}	
+}
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComponent;
+import javax.swing.JFrame;
+import java.awt.GridLayout;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class Aah extends JFrame implements ActionListener {
+	JCheckBox checkbox1;
+	JCheckBox checkbox2;
+	JCheckBox checkbox3;
+	JCheckBox checkbox4;
+	JCheckBox checkbox5;
+	JButton button;
+	
+	//to add icons to the checkbox
+	ImageIcon xIcon;
+	ImageIcon checkIcon;
+	Aah(){
+		
+		checkbox1 = new JCheckBox();
+		checkbox2 = new JCheckBox();
+		checkbox3 = new JCheckBox();
+		checkbox4 = new JCheckBox();
+		checkbox5 = new JCheckBox();
+		
+		button = new JButton();
+		button.setText("submit");
+		button.addActionListener(this);//since an ActionListener is being implemented, pass in this 
+		
+		//adding icons to the checkbox
+		//xIcon = new ImageIcon("x.png"); //this would be the image path in the folder
+		//checkIcon = new ImageIcon("check.png");
+		
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setLayout(new GridLayout(5, 1));
+		this.setAlignment(JComponent.LEFT_ALIGNMENT);
+		
+		checkbox1.setText("pizza");
+		checkbox2.setText("donut");
+		checkbox3.setText("rolls");
+		checkbox4.setText("breadsticks");
+		checkbox5.setText("taco");
+		checkbox1.setFocusable(false); //this removes the border around the checkboxes
+		checkbox2.setFocusable(false);
+		checkbox3.setFocusable(false);
+		checkbox4.setFocusable(false);
+		checkbox5.setFocusable(false);
+		checkbox1.setFont(new Font("MV Boli", Font.PLAIN, 35)); //font type, style and font size
+		checkbox2.setFont(new Font("MV Boli", Font.PLAIN, 35));
+		checkbox3.setFont(new Font("MV Boli", Font.PLAIN, 35));
+		checkbox4.setFont(new Font("MV Boli", Font.PLAIN, 35));
+		checkbox5.setFont(new Font("MV Boli", Font.PLAIN, 35));
+		
+		//checkbox.setIcon(xIcon);
+		//checkbox.setSelectedIcon(checkIcon); //setSelectedIcon makes you able to toggle between 2 icons when it is selected or clicked
+		
+		this.add(button);
+		this.add(checkbox1);//add before you pack
+		this.add(checkbox2);
+		this.add(checkbox3);
+		this.add(checkbox4);
+		this.add(checkbox5);
+	
+		this.pack();
+		this.setVisible(true);		
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) { //this listens for events
+		if(e.getSource() == button) {
+			System.out.println(checkbox.isSelected()); 
+		}		
+	}	
+}
  
