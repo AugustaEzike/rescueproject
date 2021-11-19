@@ -1933,3 +1933,58 @@ public class Aah extends JFrame implements ActionListener {
 		}		
 	}	
 }
+
+//FILE CHOOSER
+public class Main {
+	
+	public static void main (String[] args) {
+		Aah file = new Aah();
+		
+	}	
+}
+
+import javax.swing.JButton;
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+
+public class Aah extends JFrame implements ActionListener {
+	
+		
+	JButton button;
+	Aah(){
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setLayout(new FlowLayout());
+		button = new JButton("Submit Button");
+		button.addActionListener(this);
+		
+		
+		this.add(button);
+		this.pack();
+		this.setVisible(true);
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == button) {
+			
+			JFileChooser fileChooser = new JFileChooser();
+			
+			//to set current directory. this means that the files will be opened/saved to this directory only 
+			fileChooser.setCurrentDirectory(new File("C:\\Users\\Augusta Ezike\\Desktop"));
+			
+			//int response = fileChooser.showOpenDialog(null);//if you have a parent component, put it in there otherwise, add null.
+															//select file to open. usual response is an integer value, 0 for file opened, 1 for cancel 
+			int response = fileChooser.showSaveDialog(null); //to select file to save
+			if (response == JFileChooser.APPROVE_OPTION) {
+				File file = new File(fileChooser.getSelectedFile().getAbsolutePath());// this returns the file path of the selected file
+				System.out.println(file); //prints file path to console
+			}
+		}
+		
+	}	
+	
+}
