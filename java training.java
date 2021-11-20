@@ -1938,8 +1938,7 @@ public class Aah extends JFrame implements ActionListener {
 public class Main {
 	
 	public static void main (String[] args) {
-		Aah file = new Aah();
-		
+		Aah file = new Aah();		
 	}	
 }
 
@@ -1951,16 +1950,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 
-public class Aah extends JFrame implements ActionListener {
-	
+public class Aah extends JFrame implements ActionListener {	
 		
 	JButton button;
 	Aah(){
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLayout(new FlowLayout());
 		button = new JButton("Submit Button");
-		button.addActionListener(this);
-		
+		button.addActionListener(this);		
 		
 		this.add(button);
 		this.pack();
@@ -1983,8 +1980,129 @@ public class Aah extends JFrame implements ActionListener {
 				File file = new File(fileChooser.getSelectedFile().getAbsolutePath());// this returns the file path of the selected file
 				System.out.println(file); //prints file path to console
 			}
+		}		
+	}		
+}
+
+//Color Picker Class
+public class Main {	
+	public static void main (String[] args) {
+		Aah color = new Aah();		
+	}	
+}
+
+import javax.swing.JButton;
+import javax.swing.JColorChooser;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.*;
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class Aah extends JFrame implements ActionListener {	
+		
+	JButton button;
+	JLabel label;
+	Aah(){
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setLayout(new FlowLayout());
+		button = new JButton("Pick a color");
+		label = new JLabel();
+		label.setBackground(Color.white);
+		label.setOpaque(true); //this has to be true so that you can see the background color
+		label.setText("this is a text");
+		label.setFont(new Font("MV Boli", Font.PLAIN, 35));
+		button.addActionListener(this);
+		
+		this.add(button);
+		this.add(label);
+		
+		this.pack();
+		this.setVisible(true);
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == button) {
+			JColorChooser colorChooser = new JColorChooser();
+			
+			Color color = JColorChooser.showDialog(null, "Pick a color", Color.black);
+			label.setForeground(color); //can also do this with the background color
+		}		
+	}		
+}
+//KEY LISTENER
+public class Main {	
+	public static void main (String[] args) {
+		new Aah();		
+	}	
+}
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.*;
+import java.awt.FlowLayout;
+
+public class Aah extends JFrame implements KeyListener {
+		JLabel label;
+	Aah(){
+				
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setLayout(null); // no layout manager
+		this.setSize(420,420);
+		this.addKeyListener(this);
+		
+		label = new JLabel();
+		label.setBounds(0,0,100,100);
+		label.setBackground(Color.red);
+		label.setOpaque(true);
+		
+		this.setVisible(true);
+		this.add(label);
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// invoked when a key is typed. uses a KeyChar (character), gives a character output when the corresponding key is pressed
+		switch(e.getKeyChar()) {
+		case 'a' : label.setLocation(label.getX()-10, label.getY()); //x and Y are co-ordinates. set location tells you where you are moving to, 10 is pixels
+		break;
+		case 'w' : label.setLocation(label.getX(), label.getY()-10);
+		break;
+		case 's': label.setLocation(label.getX(), label.getY()+10);
+		break;
+		case 'd': label.setLocation(label.getX()+10, label.getY());
+		
+		
+		}
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// invoked when a physical key is pressed down. it uses a keycode. returns an integer number depending on the number of the button that is pressed down
+		switch(e.getKeyCode()) {
+		//the numbers are for the up and down left and right 
+		case 37 : label.setLocation(label.getX()-10, label.getY()); //x and Y are co-ordinates. set location tells you where you are moving to, 10 is pixels
+		break;
+		case 38 : label.setLocation(label.getX(), label.getY()-10);
+		break;
+		case 39: label.setLocation(label.getX(), label.getY()+10);
+		break;
+		case 40: label.setLocation(label.getX()+10, label.getY());
 		}
 		
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// called whenever a button is released
+		System.out.println("you released key char: " + e.getKeyChar()); //getKeyChar tells you what button is pressed. you can use this for both upper and lower case letters
+		System.out.println("you released key code: " + e.getKeyCode()); //each key has a code
 	}	
-	
 }
