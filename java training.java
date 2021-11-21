@@ -2106,3 +2106,167 @@ public class Aah extends JFrame implements KeyListener {
 		System.out.println("you released key code: " + e.getKeyCode()); //each key has a code
 	}	
 }
+
+//Mouselistener
+public class Main {
+	
+	public static void main (String[] args) {
+		new Aah();		
+	}	
+}
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.*;
+import java.awt.FlowLayout;
+
+public class Aah extends JFrame implements MouseListener {
+		JLabel label;
+		ImageIcon smile;
+		ImageIcon pain;
+		ImageIcon nervous;
+		ImageIcon dizzy;
+		
+	Aah(){
+				
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setLayout(new FlowLayout()); 
+		this.pack();
+		this.setLocationRelativeTo(null);
+		this.setSize(420,420);
+		
+		label = new JLabel();
+		label.setBounds(0,0,100, 100);
+		label.setBackground(Color.red);
+		label.setOpaque(true);
+		this.add(label);
+		
+		smile = new ImageIcon("src/smile.png");
+		pain = new ImageIcon("src/pain.jpg");
+		nervous = new ImageIcon("src/nervous.png");
+		dizzy = new ImageIcon("src/dizzy.jpg");
+		
+		label.setIcon(smile);
+		this.setVisible(true);
+		
+		label.addMouseListener(this);	
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// when the mouse button has been clicked pressed and released over a component		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// when a mouse button has been pressed on a component
+		label.setIcon(pain);		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// when a mouse button has been released over a component
+		label.setIcon(dizzy);		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// when the mouse enters the area of a component
+		label.setIcon(nervous);		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// when the mouse exits the area of a component
+		label.setIcon(smile);		
+	}	
+}
+
+//DRAG and DROP (somthing is wrong with this code and I cannot figure it out)
+public class Main {	
+	public static void main (String[] args) {
+		new Aah();		
+	}	
+}
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.*;
+import java.awt.FlowLayout;
+
+public class Aah extends JFrame {
+		
+	JLabel label;
+	ImageIcon smile;
+	DiceRoller dragPanel = new DiceRoller();		
+		
+	Aah(){
+		
+		this.setTitle("Drag and Drop Demo");
+		this.setVisible(true);	
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setSize(600,600);				
+		this.add(dragPanel);			
+	}	
+}
+
+import java.awt.Point;
+import java.awt.Graphics;
+import javax.swing.ImageIcon;
+import javax.swing.JPanel;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseMotionAdapter;
+
+public class DiceRoller extends JPanel {
+	
+	ImageIcon image = new ImageIcon("src/smile.png");
+	//create a width and height variable
+	final int WIDTH = image.getIconWidth();
+	final int HEIGHT = image.getIconHeight();
+	Point imageCorner;
+	Point prevPt;
+	
+	DiceRoller(){
+		imageCorner = new Point (0,0);
+		ClickListener clickListener = new ClickListener();
+		DragListener dragListener = new DragListener();
+		this.addMouseListener(clickListener);
+		this.addMouseMotionListener(dragListener);
+	}
+	
+	public void paintComponent(Graphics g) { //repaints image after we update the new position 
+		super.paintComponent(g);
+		image.paintIcon(this, g, (int)imageCorner.getX(), (int)imageCorner.getY());
+	}
+	
+	private class ClickListener extends MouseAdapter() { //waits until the mouse is clicked
+		public void mousePressed(MouseEvent e) {
+			prevPt = e.getPoint();
+
+		}
+	}
+	
+	private class DragListener extends MouseMotionAdapter() {//actually moves image as we move the mouse around
+		public void mouseDragged(MouseEvent e) {
+			
+			Point currentPt = e.getPoint();
+			
+			imageCorner.translate(
+					(int)(currentPt.getX() - prevPt.getX()),
+					(int)(currentPt.getY() - prevPt.getY())
+					);
+			prevPt = currentPt;
+			repaint();
+		
+		}		
+	}
+}
