@@ -2186,7 +2186,7 @@ public class Aah extends JFrame implements MouseListener {
 	}	
 }
 
-//DRAG and DROP (somthing is wrong with this code and I cannot figure it out)
+//DRAG and DROP (somthing is wrong with this code and I cannot figure it out - figured it out. problem was with the private methods)
 public class Main {	
 	public static void main (String[] args) {
 		new Aah();		
@@ -2248,14 +2248,14 @@ public class DiceRoller extends JPanel {
 		image.paintIcon(this, g, (int)imageCorner.getX(), (int)imageCorner.getY());
 	}
 	
-	private class ClickListener extends MouseAdapter() { //waits until the mouse is clicked
+	private class ClickListener extends MouseAdapter { //waits until the mouse is clicked
 		public void mousePressed(MouseEvent e) {
 			prevPt = e.getPoint();
 
 		}
 	}
 	
-	private class DragListener extends MouseMotionAdapter() {//actually moves image as we move the mouse around
+	private class DragListener extends MouseMotionAdapter {//actually moves image as we move the mouse around
 		public void mouseDragged(MouseEvent e) {
 			
 			Point currentPt = e.getPoint();
@@ -2270,3 +2270,223 @@ public class DiceRoller extends JPanel {
 		}		
 	}
 }
+
+
+//KEY BINDING
+public class Main {	
+	public static void main (String[] args) {
+		Aah game = new Aah();
+		
+		//keybindings =- bind an action to a certain key stroke. actualy dont require you to click a component to give it focus
+		//gives more flexibility of key listeners		
+	}	
+}
+
+import java.awt.event.*;
+import javax.swing.*;
+import java.awt.Color;
+
+public class Aah {
+	JFrame frame;
+	JLabel label;
+	Action upAction;
+	Action downAction;
+	Action leftAction;
+	Action rightAction;
+	
+	
+	Aah(){
+		frame = new JFrame("Key Binding Demo");
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setSize(420,420);
+		frame.setLayout(null);		
+	
+		
+		label = new JLabel();
+		label.setBackground(Color.red);
+		label.setBounds(100,100,100,100);
+		label.setOpaque(true);
+		
+		upAction = new UpAction();
+		downAction = new DownAction();
+		leftAction = new LeftAction();
+		rightAction = new RightAction();
+
+		//can also use key char in place of arrow keys, w, s, a, d within single quotes for up down left and right respectively
+		label.getInputMap().put(KeyStroke.getKeyStroke("UP"), "upAction");
+		label.getActionMap().put("upAction", upAction);
+		
+		label.getInputMap().put(KeyStroke.getKeyStroke("DOWN"), "downAction");
+		label.getActionMap().put("downAction", downAction);
+		
+		label.getInputMap().put(KeyStroke.getKeyStroke("LEFT"), "leftAction");
+		label.getActionMap().put("leftAction", leftAction);
+		
+		label.getInputMap().put(KeyStroke.getKeyStroke("RIGHT"), "rightAction");
+		label.getActionMap().put("rightAction", rightAction);
+		
+		frame.setVisible(true);
+		frame.add(label);				
+	}
+	
+	public class UpAction extends AbstractAction{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			label.setLocation(label.getX(), label.getY()-10);			
+		}		
+	}
+	
+	public class DownAction extends AbstractAction{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			label.setLocation(label.getX(), label.getY()+10);			
+		}		
+	}
+	
+	public class LeftAction extends AbstractAction{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			label.setLocation(label.getX()-10, label.getY()-10);			
+		}		
+	}
+	
+	public class RightAction extends AbstractAction{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+		label.setLocation(label.getX()+10, label.getY()-10);			
+		}		
+	}	
+}
+
+//GENERIC METHODS
+public class Main {
+	
+	public static void main (String[] args) {
+		
+		Integer[] intArray = {1, 2, 3, 4};
+		Double[] dArray = {0.1, 0.2, 0.3, 0.4};
+		Character[] cArray = {'H', 'B', 'O', 'U'};
+		String[] sArray = {"we", "saw", "a", "shark"};
+		
+		//call the method
+		displayArray(intArray);
+		displayArray(dArray);
+		displayArray(cArray);
+		displayArray(sArray);
+	}
+		//create a generic method. for Generic method, it is common practice to use the letter T to let others know its generic
+		public static <T> void displayArray(T[] array) {
+			for(T x: array) {
+				System.out.print(x + " ");
+			}
+			System.out.println();		
+	}	
+}
+
+//TIMER AND TIMERTASK
+
+import java.util.Calendar;
+import java.util.Timer;
+import java.util.TimerTask;
+
+public class Main {
+
+	public static void main(String[] args) {
+		
+		Timer timer = new Timer();
+		
+		TimerTask task = new TimerTask() {
+			int counter = 10;
+
+			@Override
+			public void run() {
+				if (counter > 0) {
+					System.out.println(counter + " seconds");
+					counter --;					
+				}
+				else {
+					System.out.println("Task is complete");
+					timer.cancel();
+				}				
+			}			
+		};
+		
+		Calendar date = Calendar.getInstance();
+		date.set(Calendar.YEAR, 2021);
+		date.set(Calendar.MONTH, Calendar.NOVEMBER);
+		date.set(Calendar.DAY_OF_MONTH, 21);
+		date.set(Calendar.HOUR_OF_DAY, 15);
+		date.set(Calendar.MINUTE, 44);
+		date.set(Calendar.SECOND, 50);
+		date.set(Calendar.MILLISECOND, 0);
+		
+		//timer.schedule(task, 3000);
+		//timer.schedule(task,  date.getTime());
+		
+		//to create a count down timer
+		timer.scheduleAtFixedRate(task, date.getTime(), 1000);	
+	}
+}
+
+ //MULTITHREADING
+
+public class Main {
+
+	public static void main(String[] args) throws InterruptedException {
+		
+		myThread thread1 = new myThread();
+
+		myRunable runnable1 = new myRunable();
+		Thread thread2 = new Thread(runnable1);
+		
+		thread1.start();
+		thread1.join();
+		thread2.start();
+	}		
+}
+
+
+public class myThread extends Thread{
+
+	@Override
+	public void run() { 
+		
+		for (int i = 10; i>0; i--) {
+			System.out.println("Thread #1 : " + i);
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}	
+			System.out.println("Thread no 2 is finished");
+		}		
+	}
+}
+
+
+public class myRunable implements Runnable{
+
+	@Override
+	public void run() {
+		
+		for (int i = 10; i<0; i++) {
+			System.out.println("Thread #1 : " + i);
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}		
+			System.out.println("Thread no 1 is finished");
+		}	
+	}
+}
+
+
+		
+		
