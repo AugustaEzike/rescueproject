@@ -2488,5 +2488,39 @@ public class myRunable implements Runnable{
 }
 
 
+//SNAKE GAME
+public class Main {
+
+	public static void main(String[] args) throws InterruptedException {
+		
+		new GameFrame();
+	 	new GamePanel();
+	} 			
+};
+
+
+import javax.swing.JFrame;
+
+public class GameFrame extends JFrame{
+	
+	GamePanel panel;
+	GameFrame(){
+		 panel = new GamePanel();
+		 
+		 this.add(panel); //use this keyword because it is extending JFrame
+		 this.setTitle("Snake Game");
+		 this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		 this.setResizable(false);
+		 this.pack();
+		 this.setVisible(true);
+		 this.setLocationRelativeTo(null); //makes it appear on the center of the window	
+	}
+}
+
+		
+		
+
+
+
 		
 		
