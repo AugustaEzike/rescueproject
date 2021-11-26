@@ -2308,7 +2308,7 @@ public class Aah {
 		label.setOpaque(true);
 		
 		upAction = new UpAction();
-		downAction = new DownAction();
+		downAction = new DownAction();p
 		leftAction = new LeftAction();
 		rightAction = new RightAction();
 
