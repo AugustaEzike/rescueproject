@@ -1,32 +1,11 @@
 *{
     padding: 0;
     margin: 0;
-    box-sizing: border-box;
-}
-
-.navbar-brand{
-    font-size: 2rem;
-    font-weight: 100;
-    color: black;
-    font-family: 'Lobster', cursive;
     
 }
 
-.navbar-brand:hover{
-    color: black;
-}
 
-.nav-link{
-    color: black;
-    text-transform: uppercase;
-    font-family: 'Rubik', sans-serif;
-}
-
-.nav-link:hover{
-    color: black;
-}
-
-.main{
+.main {
     background: url(./images/pov.png)no-repeat;
     background-size: cover;
     height: 100vh;
@@ -34,15 +13,60 @@
     width: 100%;
 }
 
+.navbar-brand{
+    font-family: 'Russo One', sans-serif;
+    color: black;
+    font-size: 3rem;
+
+}
+
+.nav-link{
+    font-family: 'Oswald', sans-serif;
+    font-weight: bold;
+    font-size: large;
+    color: rgb(203, 183, 137);
+    text-transform: uppercase;   
+    margin-left: 40px;
+    cursor: pointer;
+}
+
+.nav-link:hover{
+    color: black;
+}
+
 .btn1{
     height: 45px;
-    width: 20%;
+    width: 10%;
     border: none;
     outline: none;
     background-color:rgb(248, 26, 92);
     color: white;
     font-weight: 700;
     border-radius: 60px;
-    margin-top: 13rem;
-    margin-left: 30%;
+    margin-top: 27rem;
+    margin-left: 10%;
 }
+
+.btn2{
+    background-color:rgb(248, 26, 92);
+    color: white;
+    height: 45px;
+    width: 10%;
+    border: none;
+    outline: none;
+    border-radius: 30px;
+}
+
+.footer{
+    margin-top:10rem;
+}
+
+.fab{    
+    margin-left: 25px;
+    cursor: pointer;
+}
+
+.fab, h1{
+    color: rgb(238, 209, 107)
+}
+
