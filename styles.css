@@ -70,3 +70,13 @@
     color: rgb(238, 209, 107)
 }
 
+.fas{
+    font-family: 'Oswald', sans-serif;
+    font-weight: bold;
+    font-size: large;
+    color: rgb(203, 183, 137);
+    text-transform: uppercase;   
+    margin-left: 40px;
+    cursor: pointer;
+}
+
